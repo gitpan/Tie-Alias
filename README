@@ -1,0 +1,22 @@
+Tie/Alias version 0.01
+======================
+
+INSTALLATION
+
+To install this module type the following:
+
+   perl Makefile.PL
+   make
+   make test
+   make install
+
+This module provides LEXICAL aliases for scalars. 
+
+To get Tie::Alias
+to provide aliases for arrays and
+for hashes, obtain Tie::Alias::Hash and Tie::Alias::Array.
+Support for Tie::Alias::Handle is written into Tie::Alias
+but all it does at this time is croak and suggest using
+bourne-shell style duplicate opening instead. 
+
+
