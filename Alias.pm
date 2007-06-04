@@ -3,7 +3,7 @@ package Tie::Alias;
 use 5.008;
 
 use Carp ();
-our $VERSION = '1.00';
+our $VERSION = '1.01';
 
 
 sub TIESCALAR {
@@ -75,7 +75,7 @@ package Tie::Alias::Array;
 sub TIEARRAY {
 
         my ( $class , $ref ) = @_ ;
-	eval {
+	my $rval = eval {
           if ( tied(@$ref)  ) {
                 # we are re-aliasing something
                 return tied ($$ref);
@@ -85,6 +85,7 @@ sub TIEARRAY {
           };
 	};
         $@ and Carp::croak "$ref IS NOT AN ARRAY REFERENCE";
+	return $rval;
 };
 
 sub FETCH{
@@ -134,7 +135,7 @@ package Tie::Alias::Hash;
 
 sub TIEHASH {
         my ( $class , $ref ) = @_ ;
-	eval {
+	my $rval = eval {
           if ( tied(%$ref)  ) {
                 # we are re-aliasing something
                 return tied (%$ref);
@@ -144,6 +145,7 @@ sub TIEHASH {
           };
 	};
         $@ and Carp::croak "$ref IS NOT A HASH REFERENCE";
+	return $rval;
 };
 
 
